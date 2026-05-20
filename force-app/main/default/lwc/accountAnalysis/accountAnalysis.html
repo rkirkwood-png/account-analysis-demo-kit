@@ -1,0 +1,95 @@
+<template>
+    <div class="slds-p-around_large">
+        <lightning-tabset>
+            <lightning-tab value="dealSourcing" label="Deal Sourcing">
+                <div class="slds-grid slds-gutters slds-m-bottom_large">
+                    <div class="slds-col">
+                        <div class="slds-media slds-m-bottom_small">
+                            <div class="slds-media__figure">
+                                <lightning-icon icon-name="standard:opportunity" size="large"></lightning-icon>
+                            </div>
+                            <div class="slds-media__body">
+                                <h1 class="slds-text-heading_large">Principal Deal Desk</h1>
+                                <p class="slds-text-body_regular slds-text-color_weak">Get instant insights for investment committee preparation and transaction execution</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slds-col slds-size_1-of-4">
+                        <div class="slds-box slds-box_small" style="border-radius:8px; background:#f3f3f3;">
+                            <p class="slds-text-title_caps slds-m-bottom_x-small" style="color:#0176d3;">
+                                <lightning-icon icon-name="utility:info" size="x-small" class="slds-m-right_x-small"></lightning-icon>
+                                Quick Start
+                            </p>
+                            <p class="slds-text-body_small slds-m-bottom_xx-small">
+                                <lightning-icon icon-name="utility:search" size="xx-small" class="slds-m-right_xx-small"></lightning-icon>
+                                Pick an account below
+                            </p>
+                            <p class="slds-text-body_small slds-m-bottom_xx-small">
+                                <lightning-icon icon-name="utility:einstein" size="xx-small" class="slds-m-right_xx-small"></lightning-icon>
+                                Agentforce analysis starts automatically
+                            </p>
+                            <p class="slds-text-body_small">
+                                <lightning-icon icon-name="utility:sparkles" size="xx-small" class="slds-m-right_xx-small"></lightning-icon>
+                                Explore insights in seconds!
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="slds-m-bottom_large">
+                    <lightning-input
+                        label="Select Target Account"
+                        placeholder="Type account name to search..."
+                        onchange={handleSearchInput}
+                        value={searchTerm}>
+                    </lightning-input>
+                    <template lwc:if={searchResults}>
+                        <div class="slds-box slds-m-top_x-small" style="max-height:200px;overflow-y:auto;">
+                            <template for:each={searchResults} for:item="account">
+                                <div key={account.Id}
+                                     class="slds-p-around_small slds-border_bottom"
+                                     style="cursor:pointer;"
+                                     data-id={account.Id}
+                                     data-name={account.Name}
+                                     onclick={handleAccountSelect}>
+                                    <p class="slds-text-body_regular">{account.Name}</p>
+                                    <p class="slds-text-body_small slds-text-color_weak">{account.Industry} · {account.BillingCity}</p>
+                                </div>
+                            </template>
+                        </div>
+                    </template>
+                    <template lwc:if={selectedAccountName}>
+                        <div class="slds-grid slds-gutters slds-m-top_x-small">
+                            <div class="slds-col">
+                                <p class="slds-text-color_success">Selected: {selectedAccountName}</p>
+                            </div>
+                            <div class="slds-col slds-no-flex">
+                                <lightning-button
+                                    label="Clear"
+                                    icon-name="utility:close"
+                                    icon-position="left"
+                                    onclick={clearSelection}>
+                                </lightning-button>
+                            </div>
+                        </div>
+                    </template>
+                </div>
+                <template lwc:if={selectedAccountId}>
+                    <div class="slds-grid slds-gutters">
+                        <div class="slds-col slds-size_1-of-2">
+                            <c-relationship-health account-id={selectedAccountId}></c-relationship-health>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2">
+                            <c-account-research account-id={selectedAccountId}></c-account-research>
+                        </div>
+                    </div>
+                    <div class="slds-m-top_large">
+                        <c-meeting-prep-brief account-id={selectedAccountId}></c-meeting-prep-brief>
+                    </div>
+                </template>
+            </lightning-tab>
+            <lightning-tab value="portfolioReview" label="Portfolio Review">
+                <c-fund-review></c-fund-review>
+            </lightning-tab>
+        </lightning-tabset>
+    </div>
+</template>

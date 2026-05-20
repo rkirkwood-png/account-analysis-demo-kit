@@ -1,0 +1,54 @@
+<template>
+    <lightning-card title="Fund Health">
+        <div class="slds-p-around_medium">
+            <template lwc:if={isLoading}>
+                <lightning-spinner alternative-text="Loading fund health"></lightning-spinner>
+            </template>
+            <template lwc:elseif={error}>
+                <div class="slds-text-color_error">{error}</div>
+            </template>
+            <template lwc:elseif={result}>
+                <div class="slds-m-bottom_small">
+                    <h2 class="slds-text-heading_medium">{result.name}</h2>
+                    <template lwc:if={result.isOpen}>
+                        <span class="slds-badge slds-theme_success">Open</span>
+                    </template>
+                    <template lwc:else>
+                        <span class="slds-badge">Closed</span>
+                    </template>
+                </div>
+                <div class="slds-grid slds-wrap slds-gutters slds-m-bottom_medium">
+                    <div class="slds-col slds-size_1-of-2 slds-m-bottom_small">
+                        <div class="slds-text-title">Target Size</div>
+                        <div class="slds-text-heading_small">{result.targetSize}</div>
+                    </div>
+                    <div class="slds-col slds-size_1-of-2 slds-m-bottom_small">
+                        <div class="slds-text-title">Deployed</div>
+                        <div class="slds-text-heading_small">{result.totalInvestments}</div>
+                    </div>
+                    <div class="slds-col slds-size_1-of-2">
+                        <div class="slds-text-title">Management Fee</div>
+                        <div class="slds-text-heading_small">{result.managementFee}</div>
+                    </div>
+                    <div class="slds-col slds-size_1-of-2">
+                        <div class="slds-text-title">Term</div>
+                        <div class="slds-text-heading_small">{result.term}</div>
+                    </div>
+                </div>
+                <div class="slds-m-bottom_medium">
+                    <div class="slds-text-title slds-m-bottom_x-small">Deployment Progress ({result.deploymentPercentage}%)</div>
+                    <div class="slds-progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow={result.deploymentPercentage}>
+                        <span class="slds-progress-bar__value" style={deploymentBarStyle}></span>
+                    </div>
+                </div>
+                <p class="slds-m-bottom_medium">{result.healthSummary}</p>
+                <div class="slds-text-title slds-m-bottom_x-small">Key Risks</div>
+                <ul class="slds-list_dotted slds-p-left_medium">
+                    <template for:each={result.keyRisks} for:item="risk">
+                        <li key={risk}>{risk}</li>
+                    </template>
+                </ul>
+            </template>
+        </div>
+    </lightning-card>
+</template>

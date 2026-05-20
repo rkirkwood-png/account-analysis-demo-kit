@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenAiPromptTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <activeVersionIdentifier>o+OQFpBb7Yj2/mLf79bFhVhqpfwn2GkxwPlIlXOFtXw=_3</activeVersionIdentifier>
+    <description>Used to generate a title from a piece of text or an uploaded image of a note.</description>
+    <developerName>Umair_AI_Notes_Solution_1_3_Title</developerName>
+    <masterLabel>Umair - AI Notes Solution 1/3 Title</masterLabel>
+    <overridable>false</overridable>
+    <templateVersions>
+        <content>Purpose: Generate a concise, normalized, high-quality title for the note
+ Output: ONLY the title (no formatting, no extra text)
+
+📥 1. INPUTS
+You are analyzing:
+An uploaded image of handwritten meeting notes
+Optional additional text provided by the end user (may or may not be present), entered here: {!$Input:Text}
+If {!$Input:Text} is blank, empty, or null, rely only on the uploaded image.
+
+🔎 2. CONTEXT
+This is Prompt 1 of 3 in a standardized, multi-prompt Salesforce solution used to process handwritten meeting notes.
+All three prompts operate on the same uploaded image and the same optional user-provided text. Each prompt has a single, well-defined responsibility and produces a separate output used downstream in Salesforce Flow.
+Your responsibility in Prompt 1 is to generate a clean, professional, consistently formatted title that clearly communicates the purpose or theme of the meeting.
+Treat the handwritten notes and {!$Input:Text} as a single combined source of truth. If {!$Input:Text} is empty, do not reference or infer from it.
+
+📏 3. INSTRUCTIONS (MUST FOLLOW)
+✅ Output Rules (STRICT)
+Output ONLY the title text
+Maximum 200 characters
+One single line
+No bullets, emojis, labels, quotes, or formatting
+✅ Title Normalization Rules (REQUIRED)
+The title must always follow this structure:
+ &lt;Current Date&gt; - &lt;Descriptive Title&gt;
+Always use the current date (date of execution)
+Date format must be: YYYY-MM-DD
+Do not extract, infer, or reference a meeting date from the notes
+✅ Descriptive Title Quality Rules (GUARDRAILS)
+Must clearly reflect the primary purpose or topic of the meeting
+Must be specific enough to be meaningful in a list view
+Must use professional, CRM-appropriate language
+Must not be generic (e.g., “Meeting Notes”, “Client Call”, “Discussion”)
+If details are limited, choose a conservative but descriptive title rather than a vague one.
+🚫 Do NOT
+Do not include the body notes or next steps
+Do not invent names, dates, or outcomes
+Do not explain your reasoning
+Do not include markdown, emojis, or unnecessary punctuation
+
+</content>
+        <inputs>
+            <apiName>Text</apiName>
+            <definition>primitive://String</definition>
+            <masterLabel>Text</masterLabel>
+            <referenceName>Input:Text</referenceName>
+            <required>true</required>
+        </inputs>
+        <inputs>
+            <apiName>File</apiName>
+            <definition>SOBJECT://ContentDocument</definition>
+            <masterLabel>File</masterLabel>
+            <referenceName>Input:File</referenceName>
+            <required>false</required>
+        </inputs>
+        <isCitationEnabled>false</isCitationEnabled>
+        <primaryModel>sfdc_ai__DefaultVertexAIGemini25Flash001</primaryModel>
+        <status>Published</status>
+        <versionIdentifier>o+OQFpBb7Yj2/mLf79bFhVhqpfwn2GkxwPlIlXOFtXw=_1</versionIdentifier>
+    </templateVersions>
+    <templateVersions>
+        <content>Purpose: Generate a concise, high-quality title for the note
+ Output: ONLY the title (no formatting, no extra text)
+
+📥 1. INPUTS
+You are analyzing:
+An uploaded image of handwritten meeting notes
+Optional additional text provided by the end user (may or may not be present), entered here: {!$Input:Text}
+If {!$Input:Text} is blank, empty, or null, rely only on the uploaded image.
+
+🔎 2. CONTEXT
+This is Prompt 1 of 3 in a standardized, multi-prompt Salesforce solution used to process meeting notes.
+All prompts operate on the same uploaded image and the same optional user-provided text, with each prompt producing a separate output for downstream use in Salesforce Flow.
+Your responsibility in Prompt 1 is to generate a clear, professional title that accurately represents the overall meeting or note.
+Treat the handwritten notes and {!$Input:Text} as a single combined source of truth. If {!$Input:Text} is empty, do not reference or infer from it.
+
+📏 3. INSTRUCTIONS (MUST FOLLOW)
+✅ Output Rules (STRICT)
+Output ONLY the title text
+Maximum 200 characters
+One single line
+No bullets, emojis, labels, quotes, or formatting
+✅ Title Quality Rules (GUARDRAILS)
+The title must clearly reflect the primary purpose or topic of the meeting or note
+Be specific enough to be meaningful in a list view
+Use professional, CRM-appropriate language
+Avoid generic or low-signal titles (e.g., “Meeting Notes”, “Client Call”, “Discussion”)
+If details are limited, choose a conservative but descriptive title rather than a vague one.
+🚫 Do NOT
+Do not include dates of any kind
+Do not include body notes or next steps
+Do not invent names, outcomes, or details
+Do not explain your reasoning
+Do not include markdown, emojis, or unnecessary punctuation
+
+</content>
+        <inputs>
+            <apiName>Text</apiName>
+            <definition>primitive://String</definition>
+            <masterLabel>Text</masterLabel>
+            <referenceName>Input:Text</referenceName>
+            <required>true</required>
+        </inputs>
+        <inputs>
+            <apiName>File</apiName>
+            <definition>SOBJECT://ContentDocument</definition>
+            <masterLabel>File</masterLabel>
+            <referenceName>Input:File</referenceName>
+            <required>false</required>
+        </inputs>
+        <isCitationEnabled>false</isCitationEnabled>
+        <primaryModel>sfdc_ai__DefaultVertexAIGemini25Flash001</primaryModel>
+        <status>Published</status>
+        <versionIdentifier>o+OQFpBb7Yj2/mLf79bFhVhqpfwn2GkxwPlIlXOFtXw=_2</versionIdentifier>
+    </templateVersions>
+    <templateVersions>
+        <content>Purpose: Generate a concise, accurate title for the note
+ Output: ONLY the title text
+
+📥 1. INPUTS
+You are analyzing:
+An uploaded image of handwritten meeting notes
+Optional additional text provided by the end user: {!$Input:Text}
+Treat all inputs as a single source of truth.
+
+🔎 2. CONTEXT
+This is Prompt 1 of 3 in a standardized Salesforce Flow solution.
+Your responsibility is to generate a clear, professional title that reflects the provided content only if a meaningful title can be derived.
+
+📏 3. INSTRUCTIONS (STRICT — MUST FOLLOW)
+✅ Output Rules
+Output ONLY the title text
+One single line
+Maximum 200 characters
+No formatting, labels, quotes, emojis, or extra text
+
+✅ Title Creation Rules
+The title must be derived only from explicitly provided content
+Prefer specificity when a clear topic, client, or purpose is stated
+If content is vague, keep the title general and professional
+
+🚫 ZERO-INFERENCE RULE (CRITICAL)
+If the inputs contain only:
+A name
+A date
+A partial phrase
+Placeholder or identifier text
+ and no clear meeting topic:
+👉 DO NOT invent or infer a title
+Instead:
+Output the provided text verbatim or near-verbatim
+Do not embellish or reinterpret
+
+🚫 ABSOLUTE PROHIBITIONS
+Do not invent meeting purposes
+Do not infer topics, goals, or discussions
+Do not normalize, rewrite, or “improve” sparse input
+Do not explain reasoning
+🔒 FINAL ENFORCEMENT RULE
+If a meaningful title cannot be confidently derived from the input, output the safest minimal version of the provided text.
+</content>
+        <inputs>
+            <apiName>Text</apiName>
+            <definition>primitive://String</definition>
+            <masterLabel>Text</masterLabel>
+            <referenceName>Input:Text</referenceName>
+            <required>true</required>
+        </inputs>
+        <inputs>
+            <apiName>File</apiName>
+            <definition>SOBJECT://ContentDocument</definition>
+            <masterLabel>File</masterLabel>
+            <referenceName>Input:File</referenceName>
+            <required>false</required>
+        </inputs>
+        <isCitationEnabled>false</isCitationEnabled>
+        <primaryModel>sfdc_ai__DefaultVertexAIGemini25Flash001</primaryModel>
+        <status>Published</status>
+        <versionIdentifier>o+OQFpBb7Yj2/mLf79bFhVhqpfwn2GkxwPlIlXOFtXw=_3</versionIdentifier>
+    </templateVersions>
+    <type>einstein_gpt__flex</type>
+    <visibility>Global</visibility>
+</GenAiPromptTemplate>

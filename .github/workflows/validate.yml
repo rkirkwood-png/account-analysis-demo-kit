@@ -1,0 +1,40 @@
+name: Validate Salesforce Demo Kit
+
+on:
+  pull_request:
+    branches:
+      - main
+      - demo-reusable
+  workflow_dispatch:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install Salesforce CLI
+        run: npm install --global @salesforce/cli
+
+      - name: Validate scripts are present
+        run: |
+          test -f scripts/deploy.sh
+          test -f scripts/seed-demo-data.sh
+          test -f scripts/reset-demo-data.sh
+          test -f scripts/smoke-test.sh
+
+      - name: Optional org auth (if provided)
+        if: ${{ secrets.SFDX_AUTH_URL != '' }}
+        run: |
+          echo "${{ secrets.SFDX_AUTH_URL }}" > /tmp/sfdx_auth_url.txt
+          sf org login sfdx-url --sfdx-url-file /tmp/sfdx_auth_url.txt --alias ci-org
+
+      - name: Optional metadata dry run (if org authenticated)
+        if: ${{ secrets.SFDX_AUTH_URL != '' }}
+        run: sf project deploy start --dry-run --target-org ci-org --source-dir force-app

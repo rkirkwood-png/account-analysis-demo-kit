@@ -1,0 +1,67 @@
+
+<template>
+    <lightning-card>
+        <div slot="title">
+            <lightning-icon icon-name="utility:activity" size="small" 
+class="slds-m-right_small"></lightning-icon>
+            Deal Execution Risk
+        </div>
+
+        <div class="slds-p-around_medium">
+            <template lwc:if={isLoading}>
+                <div class="slds-text-align_center slds-p-around_large">
+                    <lightning-spinner alternative-text="Analyzing..." 
+size="medium"></lightning-spinner>
+                    <p class="slds-m-top_medium slds-text-color_weak">Agentforce is
+analyzing your Salesforce data...</p>
+                </div>
+            </template>
+
+            <template lwc:elseif={result}>
+                <div class="slds-grid slds-gutters slds-m-bottom_medium">
+                    <div class="slds-col slds-text-align_center">
+                        <p class="slds-text-heading_large">{result.score}</p>
+                        <p class="slds-text-body_small">/100</p>
+                        <p class="slds-text-title_caps slds-m-top_small">Deal Conviction Score</p>
+                    </div>
+                    <div class="slds-col">
+                        <div class="slds-m-bottom_small">
+                            <p class="slds-text-title_caps slds-text-color_weak">Status</p>
+                            <lightning-badge label={result.status} 
+class={statusClass}></lightning-badge>
+                        </div>
+                        <div class="slds-m-bottom_small">
+                            <p class="slds-text-title_caps slds-text-color_weak">Trend</p>
+                            <p>{result.trend}</p>
+                        </div>
+                        <div>
+                            <p class="slds-text-title_caps slds-text-color_weak">Renewal Likelihood</p>
+                            <p>{result.renewalLikelihood}</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="slds-m-bottom_medium">
+                    <h3 class="slds-text-title_caps slds-m-bottom_small">Key Insights</h3>
+                    <template for:each={result.insights} for:item="insight">
+                        <p key={insight} class="slds-m-bottom_x-small">• {insight}</p>
+                    </template>
+                </div>
+
+                <div>
+                    <h3 class="slds-text-title_caps slds-m-bottom_small">Next 7 Days</h3>
+                    <template for:each={result.actions} for:item="action">
+                        <div key={action} class="slds-box slds-box_x-small 
+slds-m-bottom_x-small slds-theme_shade">
+                            <p>{action}</p>
+                        </div>
+                    </template>
+                </div>
+            </template>
+
+            <template lwc:elseif={error}>
+                <p class="slds-text-color_error">{error}</p>
+            </template>
+        </div>
+    </lightning-card>
+</template>

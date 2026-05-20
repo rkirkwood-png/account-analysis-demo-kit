@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenAiPromptTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Fund health JSON generation for Fund Review app.</description>
+    <developerName>Fund_Review_Health</developerName>
+    <masterLabel>Fund Review Health</masterLabel>
+    <overridable>false</overridable>
+    <templateVersions>
+        <content>{!$Input:SystemPrompt}
+
+Fund Context:
+{!$Input:UserPrompt}
+
+Return only valid JSON.</content>
+        <inputs>
+            <apiName>SystemPrompt</apiName>
+            <definition>primitive://String</definition>
+            <masterLabel>System Prompt</masterLabel>
+            <referenceName>Input:SystemPrompt</referenceName>
+            <required>true</required>
+        </inputs>
+        <inputs>
+            <apiName>UserPrompt</apiName>
+            <definition>primitive://String</definition>
+            <masterLabel>User Prompt</masterLabel>
+            <referenceName>Input:UserPrompt</referenceName>
+            <required>true</required>
+        </inputs>
+        <isCitationEnabled>false</isCitationEnabled>
+        <primaryModel>sfdc_ai__DefaultGPT4Omni</primaryModel>
+        <status>Published</status>
+    </templateVersions>
+    <type>einstein_gpt__flex</type>
+    <visibility>Global</visibility>
+</GenAiPromptTemplate>

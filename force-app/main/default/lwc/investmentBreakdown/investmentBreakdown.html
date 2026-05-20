@@ -1,0 +1,47 @@
+<template>
+    <lightning-card title="Investment Breakdown">
+        <div class="slds-var-p-around_medium">
+            <template lwc:if={isLoading}>
+                <lightning-spinner alternative-text="Loading investments"></lightning-spinner>
+            </template>
+            <template lwc:elseif={error}>
+                <div class="slds-text-color_error">{error}</div>
+            </template>
+            <template lwc:elseif={result}>
+                <div class="slds-grid slds-gutters slds-m-bottom_medium">
+                    <div class="slds-col slds-size_1-of-2">
+                        <div class="slds-text-title">Total Investments</div>
+                        <div class="slds-text-heading_small">{result.totalCount}</div>
+                    </div>
+                    <div class="slds-col slds-size_1-of-2">
+                        <div class="slds-text-title">Total Deployed</div>
+                        <div class="slds-text-heading_small">{result.totalAmountDeployed}</div>
+                    </div>
+                </div>
+                <template lwc:if={hasInvestments}>
+                    <ul class="slds-has-dividers_bottom-space" aria-label="Investments">
+                        <template for:each={investmentRows} for:item="investment">
+                            <li key={investment.key} class="slds-item slds-p-vertical_small">
+                                <div class="slds-text-heading_small">{investment.investorName}</div>
+                                <div class="slds-text-body_small slds-text-color_weak slds-m-bottom_x-small">
+                                    {investment.investorType}
+                                </div>
+                                <dl class="slds-list_horizontal slds-wrap slds-text-body_small">
+                                    <dt class="slds-item_label slds-truncate" title="Amount">Amount:</dt>
+                                    <dd class="slds-item_detail slds-truncate">{investment.amount}</dd>
+                                    <dt class="slds-item_label slds-truncate" title="Capital Called">Capital Called:</dt>
+                                    <dd class="slds-item_detail slds-truncate">{investment.capitalCalled}</dd>
+                                    <dt class="slds-item_label slds-truncate" title="Capital Remaining">Capital Remaining:</dt>
+                                    <dd class="slds-item_detail slds-truncate">{investment.capitalRemaining}</dd>
+                                </dl>
+                            </li>
+                        </template>
+                    </ul>
+                </template>
+                <template lwc:else>
+                    <div class="slds-text-body_regular slds-text-color_weak">No investments found.</div>
+                </template>
+            </template>
+        </div>
+    </lightning-card>
+</template>

@@ -1,0 +1,616 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenAiPromptTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <activeVersionIdentifier>pEIRrX9UwPpOIfe1VW/YPm4vz4GYVRrD7K1I1yDNEa4=_7</activeVersionIdentifier>
+    <developerName>GA_Meeting_Prep_Prompt</developerName>
+    <masterLabel>GA Meeting Prep Prompt</masterLabel>
+    <overridable>false</overridable>
+    <relatedEntity>Account</relatedEntity>
+    <templateVersions>
+        <content>You are a Lead Investment Analyst at General Atlantic specializing in Growth Equity for Developer Tools. Generate a 5-minute pre-meeting brief for {!$Input:Account.Name} using their website {!$Input:Account.Website}
+ {!$EinsteinSearch:sfdc_ai__WebRetrievalAction.results}
+
+### SEARCH GUIDELINES
+When performing the web search for {!$Input:Account.Name}:
+1. Prioritize results from Sacra, TechCrunch, and Business Wire from the last 6 months.
+2. Search specifically for &quot;ARR&quot;, &quot;Net Revenue Retention&quot;, and &quot;Series B valuation&quot; to find growth metrics.
+3. Identify the primary competitors mentioned in recent 2026 &apos;Best of&apos; lists (e.g., Qodo, Greptile, Sonar).
+4. Look for the most recent case study on {!$Input:Account.Website} to identify their largest enterprise win.
+
+### THE BRIEFING
+[Insert previous prompt structure here...]
+
+### SEARCH FOCUS
+1. Prioritize real-time data from 2025 and 2026.
+2. Search for: &quot;Series B valuation&quot;, &quot;ARR growth&quot;, and &quot;Issue Planner launch&quot;.
+3. Use only open-access sources: Business Wire, TechCrunch, GitHub Marketplace, and the company’s official blog/changelog.
+
+### BRIEFING STRUCTURE
+
+## 1. The &quot;Growth&quot; Snapshot (2025-2026)
+- **Funding &amp; Valuation:** Summarize the $60M Series B (led by Scale VP with NVIDIA) and the ~$550M valuation.
+- **Revenue Scale:** Reference the $15M+ ARR and 20% MoM growth targets.
+- **Enterprise Traction:** List 3-5 marquee customers (e.g., Groupon, Mercury, Chegg).
+
+## 2. Product Evolution: Beyond Code Review
+- Explain the significance of the **February 2026 &quot;Issue Planner&quot;** launch. How does this move them &quot;upstream&quot; in the dev lifecycle?
+- Mention their integration with NVIDIA&apos;s Nemotron for high-speed inference.
+
+## 3. Competitive Moat (The &quot;Why Now?&quot;)
+- How do they defend against GitHub Copilot&apos;s native review features? 
+- Identify 1-2 key &quot;Agentic AI&quot; rivals (e.g., Qodo, cubic.dev, or Greptile).
+
+## 4. 5 &quot;Hard&quot; Questions for the Founders
+Provide 5 questions that specifically probe General Atlantic&apos;s interest in:
+1. **Net Revenue Retention (NRR):** Are seats expanding within the 8,000+ customers?
+2. **Gross Margins:** How are they managing inference costs at 3M+ requests?
+3. **Platform Lock-in:** Does &quot;Issue Planner&quot; prevent customers from switching to Cursor or GitLab?
+4. **M&amp;A vs. IPO:** Is the NVIDIA relationship a signal for an acquisition or a compute partnership?
+5. **Team Scaling:** They planned to double headcount by early 2026—did they hit that milestone?
+
+### SOURCES
+List the specific URLs used for this briefing.
+</content>
+        <fileDroppingStrategy>{&quot;dropFilesBy&quot;:&quot;LAST_MODIFIED_DATE&quot;,&quot;dropFileStartingWith&quot;:&quot;OLDEST&quot;}</fileDroppingStrategy>
+        <inputs>
+            <apiName>objectToSummarize</apiName>
+            <definition>SOBJECT://Account</definition>
+            <referenceName>Input:Account</referenceName>
+            <required>true</required>
+        </inputs>
+        <isCitationEnabled>false</isCitationEnabled>
+        <primaryModel>sfdc_ai__DefaultVertexAIGeminiPro25</primaryModel>
+        <status>Published</status>
+        <templateDataProviders>
+            <definition>invocable://getEinsteinRetrieverResults/sfdc_ai__WebRetrievalAction</definition>
+            <description>Web search retriever retrieves search results from the internet.</description>
+            <label>Web search retriever</label>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>searchText</parameterName>
+                <valueExpression>You are a Lead Investment Analyst at General Atlantic specializing in Growth Equity for Developer Tools. Generate a 5-minute pre-meeting brief for {!$Input:Account.Name} using their website {!$Input:Account.Website}</valueExpression>
+            </parameters>
+            <referenceName>EinsteinSearch:sfdc_ai__WebRetrievalAction</referenceName>
+        </templateDataProviders>
+        <versionIdentifier>pEIRrX9UwPpOIfe1VW/YPm4vz4GYVRrD7K1I1yDNEa4=_1</versionIdentifier>
+    </templateVersions>
+    <templateVersions>
+        <content>You are a Lead Investment Analyst at General Atlantic specializing in Growth Equity for Developer Tools. Generate a 5-minute pre-meeting brief for {!$Input:Account.Name} using their website {!$Input:Account.Website}
+ {!$EinsteinSearch:sfdc_ai__WebRetrievalAction.results}
+
+### SEARCH GUIDELINES
+When performing the web search for {!$Input:Account.Name}:
+1. Prioritize results from Sacra, TechCrunch, and Business Wire from the last 6 months.
+2. Search specifically for &quot;ARR&quot;, &quot;Net Revenue Retention&quot;, and &quot;Series B valuation&quot; to find growth metrics.
+3. Identify the primary competitors mentioned in recent 2026 &apos;Best of&apos; lists (e.g., Qodo, Greptile, Sonar).
+4. Look for the most recent case study on {!$Input:Account.Website} to identify their largest enterprise win.
+
+### THE BRIEFING
+[Insert previous prompt structure here...]
+
+### SEARCH FOCUS
+1. Prioritize real-time data from 2025 and 2026.
+2. Search for: &quot;Series B valuation&quot;, &quot;ARR growth&quot;, and &quot;Issue Planner launch&quot;.
+3. Use only open-access sources: Business Wire, TechCrunch, GitHub Marketplace, and the company’s official blog/changelog.
+
+### BRIEFING STRUCTURE
+
+## 1. The &quot;Growth&quot; Snapshot (2025-2026)
+- **Funding &amp; Valuation:** Summarize the $60M Series B (led by Scale VP with NVIDIA) and the ~$550M valuation.
+- **Revenue Scale:** Reference the $15M+ ARR and 20% MoM growth targets.
+- **Enterprise Traction:** List 3-5 marquee customers (e.g., Groupon, Mercury, Chegg).
+
+## 2. Product Evolution: Beyond Code Review
+- Explain the significance of the **February 2026 &quot;Issue Planner&quot;** launch. How does this move them &quot;upstream&quot; in the dev lifecycle?
+- Mention their integration with NVIDIA&apos;s Nemotron for high-speed inference.
+
+## 3. Competitive Moat (The &quot;Why Now?&quot;)
+- How do they defend against GitHub Copilot&apos;s native review features? 
+- Identify 1-2 key &quot;Agentic AI&quot; rivals (e.g., Qodo, cubic.dev, or Greptile).
+
+## 4. 5 &quot;Hard&quot; Questions for the Founders
+Provide 5 questions that specifically probe General Atlantic&apos;s interest in:
+1. **Net Revenue Retention (NRR):** Are seats expanding within the 8,000+ customers?
+2. **Gross Margins:** How are they managing inference costs at 3M+ requests?
+3. **Platform Lock-in:** Does &quot;Issue Planner&quot; prevent customers from switching to Cursor or GitLab?
+4. **M&amp;A vs. IPO:** Is the NVIDIA relationship a signal for an acquisition or a compute partnership?
+5. **Team Scaling:** They planned to double headcount by early 2026—did they hit that milestone?
+
+## 5. Recent News &amp; Market Signal (Last 6 Months)
+Identify the 3 most significant news articles or press releases from 2025-2026. 
+- For each article, provide the **Date**, **Source**, and a **1-sentence &quot;Investor Takeaway&quot;** (e.g., &quot;This partnership validates their enterprise security moats&quot;).
+
+### SOURCES
+List the specific URLs used for this briefing.
+</content>
+        <fileDroppingStrategy>{&quot;dropFilesBy&quot;:&quot;LAST_MODIFIED_DATE&quot;,&quot;dropFileStartingWith&quot;:&quot;OLDEST&quot;}</fileDroppingStrategy>
+        <inputs>
+            <apiName>objectToSummarize</apiName>
+            <definition>SOBJECT://Account</definition>
+            <referenceName>Input:Account</referenceName>
+            <required>true</required>
+        </inputs>
+        <isCitationEnabled>false</isCitationEnabled>
+        <primaryModel>sfdc_ai__DefaultVertexAIGeminiPro25</primaryModel>
+        <status>Published</status>
+        <templateDataProviders>
+            <definition>invocable://getEinsteinRetrieverResults/sfdc_ai__WebRetrievalAction</definition>
+            <description>Web search retriever retrieves search results from the internet.</description>
+            <label>Web search retriever</label>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>searchText</parameterName>
+                <valueExpression>You are a Lead Investment Analyst at General Atlantic specializing in Growth Equity for Developer Tools. Generate a 5-minute pre-meeting brief for {!$Input:Account.Name} using their website {!$Input:Account.Website}</valueExpression>
+            </parameters>
+            <referenceName>EinsteinSearch:sfdc_ai__WebRetrievalAction</referenceName>
+        </templateDataProviders>
+        <versionIdentifier>pEIRrX9UwPpOIfe1VW/YPm4vz4GYVRrD7K1I1yDNEa4=_2</versionIdentifier>
+    </templateVersions>
+    <templateVersions>
+        <content>You are a Lead Investment Analyst at General Atlantic specializing in Growth Equity for Developer Tools. Generate a 5-minute pre-meeting brief for {!$Input:Account.Name} using their website {!$Input:Account.Website}
+ {!$EinsteinSearch:sfdc_ai__WebRetrievalAction.results}
+
+### SEARCH GUIDELINES
+When performing the web search for {!$Input:Account.Name}:
+1. Prioritize results from Sacra, TechCrunch, and Business Wire from the last 6 months.
+2. Search specifically for &quot;ARR&quot;, &quot;Net Revenue Retention&quot;, and &quot;Series B valuation&quot; to find growth metrics.
+3. Identify the primary competitors mentioned in recent 2026 &apos;Best of&apos; lists (e.g., Qodo, Greptile, Sonar).
+4. Look for the most recent case study on {!$Input:Account.Website} to identify their largest enterprise win.
+
+### THE BRIEFING
+[Insert previous prompt structure here...]
+
+### SEARCH FOCUS
+1. Prioritize real-time data from 2025 and 2026.
+2. Search for: &quot;Series B valuation&quot;, &quot;ARR growth&quot;, and &quot;Issue Planner launch&quot;.
+3. Use only open-access sources: Business Wire, TechCrunch, GitHub Marketplace, and the company’s official blog/changelog.
+
+### BRIEFING STRUCTURE
+
+## 1. The &quot;Growth&quot; Snapshot (2025-2026)
+- **Funding &amp; Valuation:** Summarize the $60M Series B (led by Scale VP with NVIDIA) and the ~$550M valuation.
+- **Revenue Scale:** Reference the $15M+ ARR and 20% MoM growth targets.
+- **Enterprise Traction:** List 3-5 marquee customers (e.g., Groupon, Mercury, Chegg).
+
+## 2. Product Evolution: Beyond Code Review
+- Explain the significance of the **February 2026 &quot;Issue Planner&quot;** launch. How does this move them &quot;upstream&quot; in the dev lifecycle?
+- Mention their integration with NVIDIA&apos;s Nemotron for high-speed inference.
+
+## 3. Competitive Moat (The &quot;Why Now?&quot;)
+- How do they defend against GitHub Copilot&apos;s native review features? 
+- Identify 1-2 key &quot;Agentic AI&quot; rivals (e.g., Qodo, cubic.dev, or Greptile).
+
+## 4. 5 &quot;Hard&quot; Questions for the Founders
+Provide 5 questions that specifically probe General Atlantic&apos;s interest in:
+1. **Net Revenue Retention (NRR):** Are seats expanding within the 8,000+ customers?
+2. **Gross Margins:** How are they managing inference costs at 3M+ requests?
+3. **Platform Lock-in:** Does &quot;Issue Planner&quot; prevent customers from switching to Cursor or GitLab?
+4. **M&amp;A vs. IPO:** Is the NVIDIA relationship a signal for an acquisition or a compute partnership?
+5. **Team Scaling:** They planned to double headcount by early 2026—did they hit that milestone?
+
+## 5. Recent News &amp; Market Signal (Last 6 Months)
+Identify the 3 most significant news articles or press releases from 2025-2026. 
+- For each article, provide the **Article Title, **Date**, **Source**, and a **1-sentence &quot;Investor Takeaway&quot;** (e.g., &quot;This partnership validates their enterprise security moats&quot;).
+- Make this information into a list that is easy to read
+
+### SOURCES
+List the specific URLs used for this briefing.
+</content>
+        <fileDroppingStrategy>{&quot;dropFilesBy&quot;:&quot;LAST_MODIFIED_DATE&quot;,&quot;dropFileStartingWith&quot;:&quot;OLDEST&quot;}</fileDroppingStrategy>
+        <inputs>
+            <apiName>objectToSummarize</apiName>
+            <definition>SOBJECT://Account</definition>
+            <referenceName>Input:Account</referenceName>
+            <required>true</required>
+        </inputs>
+        <isCitationEnabled>false</isCitationEnabled>
+        <primaryModel>sfdc_ai__DefaultVertexAIGeminiPro25</primaryModel>
+        <status>Published</status>
+        <templateDataProviders>
+            <definition>invocable://getEinsteinRetrieverResults/sfdc_ai__WebRetrievalAction</definition>
+            <description>Web search retriever retrieves search results from the internet.</description>
+            <label>Web search retriever</label>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>searchText</parameterName>
+                <valueExpression>You are a Lead Investment Analyst at General Atlantic specializing in Growth Equity for Developer Tools. Generate a 5-minute pre-meeting brief for {!$Input:Account.Name} using their website {!$Input:Account.Website}</valueExpression>
+            </parameters>
+            <referenceName>EinsteinSearch:sfdc_ai__WebRetrievalAction</referenceName>
+        </templateDataProviders>
+        <versionIdentifier>pEIRrX9UwPpOIfe1VW/YPm4vz4GYVRrD7K1I1yDNEa4=_3</versionIdentifier>
+    </templateVersions>
+    <templateVersions>
+        <content>You are a Lead Investment Analyst at General Atlantic specializing in Growth Equity for Developer Tools. Generate a 5-minute pre-meeting brief for {!$Input:Account.Name} using their website {!$Input:Account.Website}
+ {!$EinsteinSearch:sfdc_ai__WebRetrievalAction.results}
+
+### SEARCH GUIDELINES
+When performing the web search for {!$Input:Account.Name}:
+1. Prioritize results from Sacra, TechCrunch, and Business Wire from the last 6 months.
+2. Search specifically for &quot;ARR&quot;, &quot;Net Revenue Retention&quot;, and &quot;Series B valuation&quot; to find growth metrics.
+3. Identify the primary competitors mentioned in recent 2026 &apos;Best of&apos; lists (e.g., Qodo, Greptile, Sonar).
+4. Look for the most recent case study on {!$Input:Account.Website} to identify their largest enterprise win.
+5. Check Linkedin.com for Employee Size changes, news, or insights about {!$Input:Account.Name}
+
+### THE BRIEFING
+
+### SEARCH FOCUS
+1. Prioritize real-time data from 2025 and 2026.
+2. Search for: &quot;Series B valuation&quot;, &quot;ARR growth&quot;, and &quot;Issue Planner launch&quot;.
+3. Use only open-access sources: Business Wire, TechCrunch, GitHub Marketplace, and the company’s official blog/changelog.
+
+### BRIEFING STRUCTURE
+
+## 1. The &quot;Growth&quot; Snapshot (2025-2026)
+- **Funding &amp; Valuation:** Summarize the $60M Series B (led by Scale VP with NVIDIA) and the ~$550M valuation.
+- **Revenue Scale:** Reference the $15M+ ARR and 20% MoM growth targets.
+- **Enterprise Traction:** List 3-5 marquee customers (e.g., Groupon, Mercury, Chegg).
+
+## 2. Product Evolution: Beyond Code Review
+- Explain the significance of the **February 2026 &quot;Issue Planner&quot;** launch. How does this move them &quot;upstream&quot; in the dev lifecycle?
+- Mention their integration with NVIDIA&apos;s Nemotron for high-speed inference.
+
+## 3. Competitive Moat (The &quot;Why Now?&quot;)
+- How do they defend against GitHub Copilot&apos;s native review features? 
+- Identify 1-2 key &quot;Agentic AI&quot; rivals (e.g., Qodo, cubic.dev, or Greptile).
+
+## 4. LinkedIn News or Insights
+[Summarize information gathered from Linkedin here]
+
+## 5. Five &quot;Hard&quot; Questions for the Founders
+Provide 5 questions that specifically probe General Atlantic&apos;s interest in:
+1. **Net Revenue Retention (NRR):** Are seats expanding within the 8,000+ customers?
+2. **Gross Margins:** How are they managing inference costs at 3M+ requests?
+3. **Platform Lock-in:** Does &quot;Issue Planner&quot; prevent customers from switching to Cursor or GitLab?
+4. **M&amp;A vs. IPO:** Is the NVIDIA relationship a signal for an acquisition or a compute partnership?
+5. **Team Scaling:** They planned to double headcount by early 2026—did they hit that milestone?
+
+## 6. Recent News &amp; Market Signal (Last 6 Months)
+Identify the 3 most significant news articles or press releases from 2025-2026. 
+- For each article, provide the **Article Title, **Date**, **Source**, and a **1-sentence &quot;Investor Takeaway&quot;** (e.g., &quot;This partnership validates their enterprise security moats&quot;).
+- Make this information into a list that is easy to read
+
+### SOURCES
+List the specific URLs used for this briefing.
+</content>
+        <fileDroppingStrategy>{&quot;dropFilesBy&quot;:&quot;LAST_MODIFIED_DATE&quot;,&quot;dropFileStartingWith&quot;:&quot;OLDEST&quot;}</fileDroppingStrategy>
+        <inputs>
+            <apiName>objectToSummarize</apiName>
+            <definition>SOBJECT://Account</definition>
+            <referenceName>Input:Account</referenceName>
+            <required>true</required>
+        </inputs>
+        <isCitationEnabled>false</isCitationEnabled>
+        <primaryModel>sfdc_ai__DefaultVertexAIGeminiPro25</primaryModel>
+        <status>Published</status>
+        <templateDataProviders>
+            <definition>invocable://getEinsteinRetrieverResults/sfdc_ai__WebRetrievalAction</definition>
+            <description>Web search retriever retrieves search results from the internet.</description>
+            <label>Web search retriever</label>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>searchText</parameterName>
+                <valueExpression>You are a Lead Investment Analyst at General Atlantic specializing in Growth Equity for Developer Tools. Generate a 5-minute pre-meeting brief for {!$Input:Account.Name} using their website {!$Input:Account.Website}</valueExpression>
+            </parameters>
+            <referenceName>EinsteinSearch:sfdc_ai__WebRetrievalAction</referenceName>
+        </templateDataProviders>
+        <versionIdentifier>pEIRrX9UwPpOIfe1VW/YPm4vz4GYVRrD7K1I1yDNEa4=_4</versionIdentifier>
+    </templateVersions>
+    <templateVersions>
+        <content>You are a Lead Investment Analyst at General Atlantic specializing in Growth Equity for Developer Tools. Generate a 5-minute pre-meeting brief for {!$Input:Account.Name} using their website {!$Input:Account.Website}
+ {!$EinsteinSearch:sfdc_ai__WebRetrievalAction.results}
+
+### SEARCH GUIDELINES
+When performing the web search for {!$Input:Account.Name}:
+1. Prioritize results from Sacra, TechCrunch, and Business Wire from the last 6 months.
+2. Search specifically for &quot;ARR&quot;, &quot;Net Revenue Retention&quot;, and &quot;Series B valuation&quot; to find growth metrics.
+3. Identify the primary competitors mentioned in recent 2026 &apos;Best of&apos; lists (e.g., Qodo, Greptile, Sonar).
+4. Look for the most recent case study on {!$Input:Account.Website} to identify their largest enterprise win.
+5. Check Linkedin.com for Employee Size changes, news, or insights about {!$Input:Account.Name}
+
+### THE BRIEFING
+
+### SEARCH FOCUS
+1. Prioritize real-time data from 2025 and 2026.
+2. Search for: &quot;Series B valuation&quot;, &quot;ARR growth&quot;, and &quot;Issue Planner launch&quot;.
+3. Use only open-access sources: Business Wire, TechCrunch, GitHub Marketplace, LinkedIn and the company’s official blog/changelog.
+
+### BRIEFING STRUCTURE
+
+## 1. The &quot;Growth&quot; Snapshot (2025-2026)
+- **Funding &amp; Valuation:** Summarize the $60M Series B (led by Scale VP with NVIDIA) and the ~$550M valuation.
+- **Revenue Scale:** Reference the $15M+ ARR and 20% MoM growth targets.
+- **Enterprise Traction:** List 3-5 marquee customers (e.g., Groupon, Mercury, Chegg).
+
+## 2. Product Evolution: Beyond Code Review
+- Explain the significance of the **February 2026 &quot;Issue Planner&quot;** launch. How does this move them &quot;upstream&quot; in the dev lifecycle?
+- Mention their integration with NVIDIA&apos;s Nemotron for high-speed inference.
+
+## 3. Competitive Moat (The &quot;Why Now?&quot;)
+- How do they defend against GitHub Copilot&apos;s native review features? 
+- Identify 1-2 key &quot;Agentic AI&quot; rivals (e.g., Qodo, cubic.dev, or Greptile).
+
+## 4. LinkedIn News or Insights
+[Summarize information gathered from Linkedin here]
+
+## 5. Five &quot;Hard&quot; Questions for the Founders
+Provide 5 questions that specifically probe General Atlantic&apos;s interest in:
+1. **Net Revenue Retention (NRR):** Are seats expanding within the 8,000+ customers?
+2. **Gross Margins:** How are they managing inference costs at 3M+ requests?
+3. **Platform Lock-in:** Does &quot;Issue Planner&quot; prevent customers from switching to Cursor or GitLab?
+4. **M&amp;A vs. IPO:** Is the NVIDIA relationship a signal for an acquisition or a compute partnership?
+5. **Team Scaling:** They planned to double headcount by early 2026—did they hit that milestone?
+
+## 6. Recent News &amp; Market Signal (Last 6 Months)
+Identify the 3 most significant news articles or press releases from 2025-2026. 
+- For each article, provide the **Article Title, **Date**, **Source**, and a **1-sentence &quot;Investor Takeaway&quot;** (e.g., &quot;This partnership validates their enterprise security moats&quot;).
+- Make this information into a list that is easy to read
+
+### SOURCES
+List the specific URLs used for this briefing.
+</content>
+        <fileDroppingStrategy>{&quot;dropFilesBy&quot;:&quot;LAST_MODIFIED_DATE&quot;,&quot;dropFileStartingWith&quot;:&quot;OLDEST&quot;}</fileDroppingStrategy>
+        <inputs>
+            <apiName>objectToSummarize</apiName>
+            <definition>SOBJECT://Account</definition>
+            <referenceName>Input:Account</referenceName>
+            <required>true</required>
+        </inputs>
+        <isCitationEnabled>false</isCitationEnabled>
+        <primaryModel>sfdc_ai__DefaultVertexAIGeminiPro25</primaryModel>
+        <status>Published</status>
+        <templateDataProviders>
+            <definition>invocable://getEinsteinRetrieverResults/sfdc_ai__WebRetrievalAction</definition>
+            <description>Web search retriever retrieves search results from the internet.</description>
+            <label>Web search retriever</label>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>searchText</parameterName>
+                <valueExpression>You are a Lead Investment Analyst at General Atlantic specializing in Growth Equity for Developer Tools. Generate a 5-minute pre-meeting brief for {!$Input:Account.Name} using their website {!$Input:Account.Website}</valueExpression>
+            </parameters>
+            <referenceName>EinsteinSearch:sfdc_ai__WebRetrievalAction</referenceName>
+        </templateDataProviders>
+        <versionIdentifier>pEIRrX9UwPpOIfe1VW/YPm4vz4GYVRrD7K1I1yDNEa4=_5</versionIdentifier>
+    </templateVersions>
+    <templateVersions>
+        <content>You are a Lead Investment Analyst at General Atlantic specializing in Growth Equity for Developer Tools. Generate a 5-minute pre-meeting brief for {!$Input:Account.Name} using their website {!$Input:Account.Website}
+
+### SEARCH GUIDELINES
+When performing the web search for {!$Input:Account.Name}:
+1. Prioritize results from Sacra, TechCrunch, and Business Wire from the last 6 months.
+2. Search specifically for &quot;ARR&quot;, &quot;Net Revenue Retention&quot;, and &quot;Series B valuation&quot; to find growth metrics.
+3. Identify the primary competitors mentioned in recent 2026 &apos;Best of&apos; lists (e.g., Qodo, Greptile, Sonar).
+4. Look for the most recent case study on {!$Input:Account.Website} to identify their largest enterprise win.
+5. Check Linkedin.com for Employee Size changes, news, or insights about {!$Input:Account.Name}
+
+ {!$EinsteinSearch:sfdc_ai__WebRetrievalAction.results}
+
+### THE BRIEFING
+
+### SEARCH FOCUS
+1. Prioritize real-time data from 2025 and 2026.
+2. Search for: &quot;Series B valuation&quot;, &quot;ARR growth&quot;, and &quot;Issue Planner launch&quot;.
+3. Use only open-access sources: Business Wire, TechCrunch, GitHub Marketplace, LinkedIn and the company’s official blog/changelog.
+
+### BRIEFING STRUCTURE
+
+## 1. The &quot;Growth&quot; Snapshot (2025-2026)
+- **Funding &amp; Valuation:** Summarize the $60M Series B (led by Scale VP with NVIDIA) and the ~$550M valuation.
+- **Revenue Scale:** Reference the $15M+ ARR and 20% MoM growth targets.
+- **Enterprise Traction:** List 3-5 marquee customers (e.g., Groupon, Mercury, Chegg).
+
+## 2. Product Evolution: Beyond Code Review
+- Explain the significance of the **February 2026 &quot;Issue Planner&quot;** launch. How does this move them &quot;upstream&quot; in the dev lifecycle?
+- Mention their integration with NVIDIA&apos;s Nemotron for high-speed inference.
+
+## 3. Competitive Moat (The &quot;Why Now?&quot;)
+- How do they defend against GitHub Copilot&apos;s native review features? 
+- Identify 1-2 key &quot;Agentic AI&quot; rivals (e.g., Qodo, cubic.dev, or Greptile).
+
+## 4. LinkedIn News or Insights
+[Summarize information gathered from Linkedin here]
+
+## 5. Five &quot;Hard&quot; Questions for the Founders
+Provide 5 questions that specifically probe General Atlantic&apos;s interest in:
+1. **Net Revenue Retention (NRR):** Are seats expanding within the 8,000+ customers?
+2. **Gross Margins:** How are they managing inference costs at 3M+ requests?
+3. **Platform Lock-in:** Does &quot;Issue Planner&quot; prevent customers from switching to Cursor or GitLab?
+4. **M&amp;A vs. IPO:** Is the NVIDIA relationship a signal for an acquisition or a compute partnership?
+5. **Team Scaling:** They planned to double headcount by early 2026—did they hit that milestone?
+
+## 6. Recent News &amp; Market Signal (Last 6 Months)
+Identify the 3 most significant news articles or press releases from 2025-2026. 
+- For each article, provide the **Article Title, **Date**, **Source**, and a **1-sentence &quot;Investor Takeaway&quot;** (e.g., &quot;This partnership validates their enterprise security moats&quot;).
+- Make this information into a list that is easy to read
+
+### SOURCES
+List the specific URLs used for this briefing.
+</content>
+        <fileDroppingStrategy>{&quot;dropFilesBy&quot;:&quot;LAST_MODIFIED_DATE&quot;,&quot;dropFileStartingWith&quot;:&quot;OLDEST&quot;}</fileDroppingStrategy>
+        <inputs>
+            <apiName>objectToSummarize</apiName>
+            <definition>SOBJECT://Account</definition>
+            <referenceName>Input:Account</referenceName>
+            <required>true</required>
+        </inputs>
+        <isCitationEnabled>false</isCitationEnabled>
+        <primaryModel>sfdc_ai__DefaultVertexAIGeminiPro25</primaryModel>
+        <status>Published</status>
+        <templateDataProviders>
+            <definition>invocable://getEinsteinRetrieverResults/sfdc_ai__WebRetrievalAction</definition>
+            <description>Web search retriever retrieves search results from the internet.</description>
+            <label>Web search retriever</label>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>searchText</parameterName>
+                <valueExpression>You are a Lead Investment Analyst at General Atlantic specializing in Growth Equity for Developer Tools. Generate a 5-minute pre-meeting brief for {!$Input:Account.Name} using their website {!$Input:Account.Website}</valueExpression>
+            </parameters>
+            <referenceName>EinsteinSearch:sfdc_ai__WebRetrievalAction</referenceName>
+        </templateDataProviders>
+        <versionIdentifier>pEIRrX9UwPpOIfe1VW/YPm4vz4GYVRrD7K1I1yDNEa4=_6</versionIdentifier>
+    </templateVersions>
+    <templateVersions>
+        <content>You are a Lead Investment Analyst at General Atlantic specializing in Growth Equity for Developer Tools. Generate a 5-minute pre-meeting brief for {!$Input:Account.Name} using their website {!$Input:Account.Website}
+
+### SEARCH GUIDELINES
+When performing the web search for {!$Input:Account.Name}:
+1. Prioritize results from Sacra, TechCrunch, and Business Wire from the last 6 months.
+2. Search specifically for &quot;ARR&quot;, &quot;Net Revenue Retention&quot;, and &quot;Series B valuation&quot; to find growth metrics.
+3. Identify the primary competitors mentioned in recent 2026 &apos;Best of&apos; lists (e.g., Qodo, Greptile, Sonar).
+4. Look for the most recent case study on {!$Input:Account.Website} to identify their largest enterprise win.
+5. Check Linkedin.com for Employee Size changes, news, or insights about {!$Input:Account.Name}
+6. Always provide URL links to backup any insights you share
+
+ {!$EinsteinSearch:sfdc_ai__WebRetrievalAction.results}
+
+### THE BRIEFING
+
+### SEARCH FOCUS
+1. Prioritize real-time data from 2025 and 2026.
+2. Search for: &quot;Series B valuation&quot;, &quot;ARR growth&quot;, and &quot;Issue Planner launch&quot;.
+3. Use only open-access sources: Business Wire, TechCrunch, GitHub Marketplace, LinkedIn and the company’s official blog/changelog.
+
+### BRIEFING STRUCTURE
+
+## 1. The &quot;Growth&quot; Snapshot (2025-2026)
+- **Funding &amp; Valuation:** Summarize the $60M Series B (led by Scale VP with NVIDIA) and the ~$550M valuation.
+- **Revenue Scale:** Reference the $15M+ ARR and 20% MoM growth targets.
+- **Enterprise Traction:** List 3-5 marquee customers (e.g., Groupon, Mercury, Chegg).
+
+## 2. Product Evolution: Beyond Code Review
+- Explain the significance of the **February 2026 &quot;Issue Planner&quot;** launch. How does this move them &quot;upstream&quot; in the dev lifecycle?
+- Mention their integration with NVIDIA&apos;s Nemotron for high-speed inference.
+
+## 3. Competitive Moat (The &quot;Why Now?&quot;)
+- How do they defend against GitHub Copilot&apos;s native review features? 
+- Identify 1-2 key &quot;Agentic AI&quot; rivals (e.g., Qodo, cubic.dev, or Greptile).
+
+## 4. LinkedIn News or Insights
+[Summarize information gathered from Linkedin here]
+
+## 5. Five &quot;Hard&quot; Questions for the Founders
+Provide 5 questions that specifically probe General Atlantic&apos;s interest in:
+1. **Net Revenue Retention (NRR):** Are seats expanding within the 8,000+ customers?
+2. **Gross Margins:** How are they managing inference costs at 3M+ requests?
+3. **Platform Lock-in:** Does &quot;Issue Planner&quot; prevent customers from switching to Cursor or GitLab?
+4. **M&amp;A vs. IPO:** Is the NVIDIA relationship a signal for an acquisition or a compute partnership?
+5. **Team Scaling:** They planned to double headcount by early 2026—did they hit that milestone?
+
+## 6. Recent News &amp; Market Signal (Last 6 Months)
+Identify the 3 most significant news articles or press releases from 2025-2026. 
+- For each article, provide the **Article Title, **Date**, **Source**, and a **1-sentence &quot;Investor Takeaway&quot;** (e.g., &quot;This partnership validates their enterprise security moats&quot;).
+- Make this information into a list that is easy to read
+
+### SOURCES
+List the specific URLs used for this briefing.
+</content>
+        <fileDroppingStrategy>{&quot;dropFilesBy&quot;:&quot;LAST_MODIFIED_DATE&quot;,&quot;dropFileStartingWith&quot;:&quot;OLDEST&quot;}</fileDroppingStrategy>
+        <inputs>
+            <apiName>objectToSummarize</apiName>
+            <definition>SOBJECT://Account</definition>
+            <referenceName>Input:Account</referenceName>
+            <required>true</required>
+        </inputs>
+        <isCitationEnabled>false</isCitationEnabled>
+        <primaryModel>sfdc_ai__DefaultVertexAIGeminiPro25</primaryModel>
+        <status>Published</status>
+        <templateDataProviders>
+            <definition>invocable://getEinsteinRetrieverResults/sfdc_ai__WebRetrievalAction</definition>
+            <description>Web search retriever retrieves search results from the internet.</description>
+            <label>Web search retriever</label>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>searchText</parameterName>
+                <valueExpression>You are a Lead Investment Analyst at General Atlantic specializing in Growth Equity for Developer Tools. Generate a 5-minute pre-meeting brief for {!$Input:Account.Name} using their website {!$Input:Account.Website}</valueExpression>
+            </parameters>
+            <referenceName>EinsteinSearch:sfdc_ai__WebRetrievalAction</referenceName>
+        </templateDataProviders>
+        <versionIdentifier>pEIRrX9UwPpOIfe1VW/YPm4vz4GYVRrD7K1I1yDNEa4=_7</versionIdentifier>
+    </templateVersions>
+    <templateVersions>
+        <content>You are a Lead Investment Analyst at General Atlantic specializing in Growth Equity for Developer Tools. Generate a 5-minute pre-meeting brief for {!$Input:Account.Name} using their website {!$Input:Account.Website}
+
+### SEARCH GUIDELINES
+When performing the web search for {!$Input:Account.Name}:
+1. Prioritize results from Sacra, TechCrunch, and Business Wire from the last 6 months.
+2. Search specifically for &quot;ARR&quot;, &quot;Net Revenue Retention&quot;, and &quot;Series B valuation&quot; to find growth metrics.
+3. Identify the primary competitors mentioned in recent 2026 &apos;Best of&apos; lists (e.g., Qodo, Greptile, Sonar).
+4. Look for the most recent case study on {!$Input:Account.Website} to identify their largest enterprise win.
+5. Check Linkedin.com for Employee Size changes, news, or insights about {!$Input:Account.Name}
+6. Always provide URL links to backup any insights you share
+
+ {!$EinsteinSearch:sfdc_ai__WebRetrievalAction.results}
+
+### THE BRIEFING
+
+### SEARCH FOCUS
+1. Prioritize real-time data from 2025 and 2026.
+2. Search for: &quot;Series B valuation&quot;, &quot;ARR growth&quot;, and &quot;Issue Planner launch&quot;.
+3. Use only open-access sources: Business Wire, TechCrunch, GitHub Marketplace, LinkedIn and the company’s official blog/changelog.
+
+### BRIEFING STRUCTURE
+
+## 1. The &quot;Growth&quot; Snapshot (2025-2026)
+- **Funding &amp; Valuation:** Summarize the $60M Series B (led by Scale VP with NVIDIA) and the ~$550M valuation.
+- **Revenue Scale:** Reference the $15M+ ARR and 20% MoM growth targets.
+- **Enterprise Traction:** List 3-5 marquee customers (e.g., Groupon, Mercury, Chegg).
+
+## 2. Product Evolution: Beyond Code Review
+- Explain the significance of the **February 2026 &quot;Issue Planner&quot;** launch. How does this move them &quot;upstream&quot; in the dev lifecycle?
+- Mention their integration with NVIDIA&apos;s Nemotron for high-speed inference.
+
+## 3. Competitive Moat (The &quot;Why Now?&quot;)
+- How do they defend against GitHub Copilot&apos;s native review features? 
+- Identify 1-2 key &quot;Agentic AI&quot; rivals (e.g., Qodo, cubic.dev, or Greptile).
+
+## 4. LinkedIn News or Insights
+[Summarize information gathered from Linkedin here]
+
+## 5. Five &quot;Hard&quot; Questions for the Founders
+Provide 5 questions that specifically probe General Atlantic&apos;s interest in:
+1. **Net Revenue Retention (NRR):** Are seats expanding within the 8,000+ customers?
+2. **Gross Margins:** How are they managing inference costs at 3M+ requests?
+3. **Platform Lock-in:** Does &quot;Issue Planner&quot; prevent customers from switching to Cursor or GitLab?
+4. **M&amp;A vs. IPO:** Is the NVIDIA relationship a signal for an acquisition or a compute partnership?
+5. **Team Scaling:** They planned to double headcount by early 2026—did they hit that milestone?
+
+## 6. Recent News &amp; Market Signal (Last 6 Months)
+Identify the 3 most significant news articles or press releases from 2025-2026. 
+- For each article, provide the **Article Title, **Date**, **Source**, and a **1-sentence &quot;Investor Takeaway&quot;** (e.g., &quot;This partnership validates their enterprise security moats&quot;).
+- Make this information into a list that is easy to read
+
+### SOURCES
+List the specific URLs used for this briefing.
+</content>
+        <fileDroppingStrategy>{&quot;dropFilesBy&quot;:&quot;LAST_MODIFIED_DATE&quot;,&quot;dropFileStartingWith&quot;:&quot;OLDEST&quot;}</fileDroppingStrategy>
+        <inputs>
+            <apiName>objectToSummarize</apiName>
+            <definition>SOBJECT://Account</definition>
+            <referenceName>Input:Account</referenceName>
+            <required>true</required>
+        </inputs>
+        <isCitationEnabled>false</isCitationEnabled>
+        <primaryModel>sfdc_ai__DefaultVertexAIGeminiPro25</primaryModel>
+        <status>Draft</status>
+        <templateDataProviders>
+            <definition>invocable://getEinsteinRetrieverResults/sfdc_ai__WebRetrievalAction</definition>
+            <description>Web search retriever retrieves search results from the internet.</description>
+            <label>Web search retriever</label>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>searchText</parameterName>
+                <valueExpression>You are a Lead Investment Analyst at General Atlantic specializing in Growth Equity for Developer Tools. Generate a 5-minute pre-meeting brief for {!$Input:Account.Name} using their website {!$Input:Account.Website}</valueExpression>
+            </parameters>
+            <referenceName>EinsteinSearch:sfdc_ai__WebRetrievalAction</referenceName>
+        </templateDataProviders>
+        <versionIdentifier>pEIRrX9UwPpOIfe1VW/YPm4vz4GYVRrD7K1I1yDNEa4=_8</versionIdentifier>
+    </templateVersions>
+    <type>einstein_gpt__recordSummary</type>
+    <visibility>Global</visibility>
+</GenAiPromptTemplate>

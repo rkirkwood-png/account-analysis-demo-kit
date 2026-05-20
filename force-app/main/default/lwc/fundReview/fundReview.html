@@ -1,0 +1,22 @@
+<template>
+    <div class="slds-p-around_large">
+        <div class="slds-m-bottom_large">
+            <lightning-record-picker
+                label="Select Fund"
+                placeholder="Search for a fund..."
+                object-api-name="Fund__c"
+                onchange={handleFundSelect}>
+            </lightning-record-picker>
+        </div>
+        <template lwc:if={selectedFundId}>
+            <div class="slds-grid slds-gutters">
+                <div class="slds-col slds-size_1-of-2">
+                    <c-fund-health fund-id={selectedFundId}></c-fund-health>
+                </div>
+                <div class="slds-col slds-size_1-of-2">
+                    <c-investment-breakdown fund-id={selectedFundId}></c-investment-breakdown>
+                </div>
+            </div>
+        </template>
+    </div>
+</template>

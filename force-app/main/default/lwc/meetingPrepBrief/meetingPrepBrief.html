@@ -1,0 +1,50 @@
+<template>
+    <lightning-card title="Meeting Prep" icon-name="utility:travel_and_places">
+        <div class="slds-p-around_medium">
+            <template lwc:if={isLoading}>
+                <div class="slds-text-align_center slds-p-around_large">
+                    <lightning-spinner alternative-text="Researching..." size="medium"></lightning-spinner>
+                    <p class="slds-m-top_medium slds-text-color_weak">Agentforce is researching the web — this may take 20-30 seconds...</p>
+                </div>
+            </template>
+            <template lwc:elseif={sections}>
+                <div class="slds-grid slds-gutters slds-wrap">
+                    <template for:each={sections} for:item="section">
+                        <div key={section.id} class="slds-col slds-size_1-of-2 slds-m-bottom_medium">
+                            <div class="slds-box slds-box_small" style="height:100%; border-radius:8px; border-left: 4px solid #0176d3;">
+                                <div class="slds-media slds-m-bottom_small">
+                                    <div class="slds-media__figure">
+                                        <lightning-icon icon-name={section.icon} size="small"></lightning-icon>
+                                    </div>
+                                    <div class="slds-media__body">
+                                        <h3 class="slds-text-heading_small">{section.title}</h3>
+                                    </div>
+                                </div>
+                                <div style="white-space: pre-wrap; font-size: 12.5px; line-height: 1.7; color: #3e3e3c; overflow-wrap: anywhere; word-break: break-word; max-width: 100%;">
+                                    <template lwc:if={section.hasLinks}>
+                                        <template lwc:if={section.content}>
+                                            <p class="slds-m-bottom_small">{section.content}</p>
+                                        </template>
+                                        <ul class="slds-list_dotted slds-m-left_medium">
+                                            <template for:each={section.links} for:item="link">
+                                                <li key={link.id} class="slds-m-bottom_x-small">
+                                                    <a href={link.url} target="_blank" rel="noopener noreferrer">{link.label}</a>
+                                                </li>
+                                            </template>
+                                        </ul>
+                                    </template>
+                                    <template lwc:else>
+                                        {section.content}
+                                    </template>
+                                </div>
+                            </div>
+                        </div>
+                    </template>
+                </div>
+            </template>
+            <template lwc:elseif={error}>
+                <p class="slds-text-color_error">{error}</p>
+            </template>
+        </div>
+    </lightning-card>
+</template>
