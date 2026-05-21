@@ -38,13 +38,14 @@ public with sharing class MeetingPrepController {
             ConnectApi.EinsteinLlmAdditionalConfigInput cfg = new ConnectApi.EinsteinLlmAdditionalConfigInput();
             cfg.applicationName = 'PromptBuilderPreview';
             input.additionalConfig = cfg;
+            Account acc = [SELECT Id, Name FROM Account WHERE Id = :accountId LIMIT 1];
             ConnectApi.WrappedValue accountValue = new ConnectApi.WrappedValue();
-            accountValue.value = String.valueOf(accountId);
+            accountValue.value = acc;
             input.inputParams = new Map<String, ConnectApi.WrappedValue>{
                 'Input:Account' => accountValue
             };
             ConnectApi.EinsteinPromptTemplateGenerationsRepresentation output =
-                ConnectApi.EinsteinLLM.generateMessagesForPromptTemplate('Headless_Meeting_Summaries', input);
+                ConnectApi.EinsteinLLM.generateMessagesForPromptTemplate('RK_Interactions_Summary_Prompt', input);
             if (output != null && output.generations != null && !output.generations.isEmpty()) {
                 return output.generations[0].text;
             }
