@@ -1,0 +1,113 @@
+.app-shell {
+    min-height: 100vh;
+    padding: 32px;
+    background: #faf7f2;
+    font-family: 'Inter', -apple-system, sans-serif;
+}
+
+.header-row {
+    display: grid;
+    grid-template-columns: 1fr minmax(260px, 320px);
+    gap: 24px;
+    align-items: start;
+}
+
+.page-title {
+    font-size: 28px;
+    font-weight: 800;
+    color: #1a1a1a;
+    margin-bottom: 8px;
+}
+
+.page-subtitle {
+    color: #6b6b6b;
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+.quick-start-card {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 16px;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+    border-left: 4px solid var(--lwc-colorBrand);
+}
+
+.quick-start-title {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #6b6b6b;
+    margin-bottom: 12px;
+}
+
+.quick-start-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: #3e3e3c;
+    line-height: 1.6;
+}
+
+.quick-start-item:not(:last-child) {
+    margin-bottom: 8px;
+}
+
+.search-section {
+    margin-bottom: 24px;
+}
+
+.editorial-search {
+    --slds-c-input-radius-border: 12px;
+    --slds-c-input-spacing-inline-start: 14px;
+    --slds-c-input-spacing-inline-end: 14px;
+    --slds-c-input-color-border: #e5e5e5;
+    --slds-c-input-text-color: #1a1a1a;
+}
+
+.search-results {
+    max-height: 220px;
+    overflow-y: auto;
+    margin-top: 8px;
+    background: #ffffff;
+    border: 1px solid #eee8df;
+    border-radius: 12px;
+}
+
+.result-item {
+    padding: 12px 14px;
+    cursor: pointer;
+    border-bottom: 1px solid #f1ece4;
+}
+
+.result-item:last-child {
+    border-bottom: 0;
+}
+
+.result-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: #1a1a1a;
+}
+
+.result-meta {
+    font-size: 12px;
+    color: #6b6b6b;
+}
+
+.selected-chip {
+    display: inline-flex;
+    align-items: center;
+    margin-top: 10px;
+    padding: 6px 8px 6px 12px;
+    border-radius: 999px;
+    background: #f3d7a6;
+    color: #5f3d0c;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.chip-clear-btn {
+    margin-left: 4px;
+}

@@ -1,66 +1,59 @@
 <template>
-    <lightning-card>
-        <div slot="title">
-            <lightning-icon icon-name="utility:search" size="small" 
-class="slds-m-right_small"></lightning-icon>
-            Investment Memo Builder
-        </div>
+    <div class="editorial-card">
+        <template lwc:if={isLoading}>
+            <div class="loading-state">
+                <lightning-spinner alternative-text="Researching..." size="medium"></lightning-spinner>
+                <p class="loading-text">Agentforce is researching this company...</p>
+            </div>
+        </template>
 
-        <div class="slds-p-around_medium">
-            <template lwc:if={isLoading}>
-                <div class="slds-text-align_center slds-p-around_large">
-                    <lightning-spinner alternative-text="Researching..." 
-size="medium"></lightning-spinner>
-                    <p class="slds-m-top_medium slds-text-color_weak">Agentforce is
-researching this company...</p>
-                </div>
-            </template>
+        <template lwc:elseif={result}>
+            <div class="section-label">Investment Memo Builder</div>
 
-            <template lwc:elseif={result}>
-                <div class="slds-m-bottom_medium">
-                    <h3 class="slds-text-title_caps slds-m-bottom_small">Company Overview</h3>
-                    <p>{result.overview}</p>
-                </div>
+            <div class="section-block">
+                <h3 class="section-heading">Company Overview</h3>
+                <p class="body-text">{result.overview}</p>
+            </div>
 
-                <div class="slds-m-bottom_medium">
-                    <h3 class="slds-text-title_caps slds-m-bottom_small">Company
-Snapshot</h3>
-                    <div class="slds-grid slds-gutters slds-wrap">
-                        <div class="slds-col slds-size_1-of-2 slds-m-bottom_small">
-                            <p class="slds-text-color_weak">Industry</p>
-                            <p>{result.industry}</p>
-                        </div>
-                        <div class="slds-col slds-size_1-of-2 slds-m-bottom_small">
-                            <p class="slds-text-color_weak">Headquarters</p>
-                            <p>{result.headquarters}</p>
-                        </div>
-                        <div class="slds-col slds-size_1-of-2 slds-m-bottom_small">
-                            <p class="slds-text-color_weak">Key Products/Services</p>
-                            <p>{result.products}</p>
-                        </div>
-                        <div class="slds-col slds-size_1-of-2 slds-m-bottom_small">
-                            <p class="slds-text-color_weak">Target Market</p>
-                            <p>{result.targetMarket}</p>
-                        </div>
-                        <div class="slds-col slds-size_1-of-2 slds-m-bottom_small">
-                            <p class="slds-text-color_weak">Website</p>
-                            <p>{result.website}</p>
-                        </div>
+            <div class="section-block">
+                <h3 class="section-heading">Company Snapshot</h3>
+                <div class="snapshot-grid">
+                    <div class="snapshot-cell">
+                        <p class="snapshot-label">Industry</p>
+                        <p class="snapshot-value">{result.industry}</p>
+                    </div>
+                    <div class="snapshot-cell">
+                        <p class="snapshot-label">Headquarters</p>
+                        <p class="snapshot-value">{result.headquarters}</p>
+                    </div>
+                    <div class="snapshot-cell">
+                        <p class="snapshot-label">Key Products/Services</p>
+                        <p class="snapshot-value">{result.products}</p>
+                    </div>
+                    <div class="snapshot-cell">
+                        <p class="snapshot-label">Target Market</p>
+                        <p class="snapshot-value">{result.targetMarket}</p>
                     </div>
                 </div>
-
-                <div class="slds-m-bottom_medium">
-                    <h3 class="slds-text-title_caps slds-m-bottom_small">Key Executives</h3>
-                    <template for:each={result.executives} for:item="exec">
-                        <p key={exec} class="slds-m-bottom_x-small">• {exec}</p>
-                    </template>
+                <div class="website-row">
+                    <p class="snapshot-label">Website</p>
+                    <a href={result.website} class="website-link" target="_blank" rel="noopener noreferrer">{result.website}</a>
                 </div>
+            </div>
 
-            </template>
+            <div class="section-block">
+                <h3 class="section-heading">Key Executives</h3>
+                <template for:each={result.executives} for:item="exec">
+                    <div key={exec} class="exec-row">
+                        <span class="exec-avatar">{exec}</span>
+                        <p class="exec-text">{exec}</p>
+                    </div>
+                </template>
+            </div>
+        </template>
 
-            <template lwc:elseif={error}>
-                <p class="slds-text-color_error">{error}</p>
-            </template>
-        </div>
-    </lightning-card>
+        <template lwc:elseif={error}>
+            <p class="error-text">{error}</p>
+        </template>
+    </div>
 </template>

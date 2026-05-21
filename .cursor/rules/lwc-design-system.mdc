@@ -1,0 +1,98 @@
+---
+description: Apply this design system to all Salesforce LWC components built in this
+project
+globs: force-app/main/default/lwc/**
+alwaysApply: true
+---
+
+# LWC Design System — Principal Deal Desk
+
+## Philosophy
+Large, confident whitespace that breathes rather than feels empty. Organic shapes and
+soft curves replacing sharp grids. Warm neutral palettes with single, deliberate accent
+colors pulled from the org theme. Typography treated as a design element, not just a
+vessel for words.
+
+## Color Palette
+- Page background: #FAF7F2 (warm off-white)
+- Card background: #FFFFFF
+- Accent (primary): var(--lwc-colorBrand) — always use org theme variable, never hardcode
+- Accent light (backgrounds/badges): use var(--lwc-colorBrand) at 15% opacity
+- Text primary: #1a1a1a
+- Text secondary: #6b6b6b
+- Subtle box background: #F5F2ED
+- Border color: #e5e5e5
+
+## Typography
+- Font stack: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif
+- Section labels: 11px, uppercase, letter-spacing 0.12em, color #6b6b6b
+- Card titles: 16px, font-weight 700, color #1a1a1a
+- Hero numbers (scores): 64px, font-weight 800, color var(--lwc-colorBrand)
+- Body text: 13px, line-height 1.7, color #3e3e3c
+- Never use Salesforce default blue (#0176d3) as a hardcoded color
+
+## Cards
+- border-radius: 20px
+- box-shadow: 0 4px 24px rgba(0,0,0,0.06)
+- padding: 24px
+- background: #FFFFFF
+- Accent left border: 4px solid var(--lwc-colorBrand)
+- Never use lightning-card for main content panels — use custom styled divs
+
+## Spacing
+- Page padding: 32px
+- Between major sections: 24px margin-bottom
+- Between cards in a grid: 16px gap
+- Inside action item rows: 12px padding, 10px border-radius
+- Always err on the side of more whitespace, never less
+
+## Component Patterns
+
+### Score/Metric display
+- Large hero number at 64px bold in var(--lwc-colorBrand)
+- Circular SVG progress ring: viewBox 0 0 120 120, strokeWidth 6
+  - Background track: stroke #f0ede8
+  - Progress arc: stroke var(--lwc-colorBrand)
+  - Use stroke-dasharray 283 and stroke-dashoffset computed as: 283 - (value/100 * 283)
+
+- Pill shape: border-radius 20px, padding 4px 12px
+- Background: var(--lwc-colorBrand) at 15% opacity
+- Text: var(--lwc-colorBrand)
+- Font: 12px font-weight 600
+
+### Section headings
+- All caps, 11px, letter-spacing 0.12em, color #6b6b6b
+- Margin-bottom 12px before content
+
+### Action item cards
+- background: #F5F2ED
+- border-radius: 10px
+- padding: 12px 16px
+- font-size: 13px
+- No border, no shadow — just the warm background
+
+### Executive/person rows
+- Small circle avatar: 32px, background var(--lwc-colorBrand) at 20% opacity
+- Initials: var(--lwc-colorBrand), font-weight 700, font-size 12px
+- Name bold 13px, title #6b6b6b 12px
+
+### Quick Start card
+- border-radius: 16px
+- soft shadow
+- padding: 16px
+- accent left border
+- Each row: small icon + text, 13px, line-height 2
+
+## CSS Files
+Always create a matching .css file for every .html file in the LWC folder.
+Never use inline styles when a CSS class can be used instead.
+Always use SLDS layout classes (slds-grid, slds-col, slds-gutters) for structure,
+but override visual styling with custom CSS classes. 
+  
+## What to avoid
+- No sharp corners (border-radius below 8px on cards)
+- No Salesforce default lightning-card for main content panels
+- No hardcoded blue colors
+- No cramped spacing — if in doubt, add more padding
+- No plain unstyled bullet lists — wrap in styled containers
+- No all-caps body text

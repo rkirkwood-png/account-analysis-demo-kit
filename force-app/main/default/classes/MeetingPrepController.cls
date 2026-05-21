@@ -30,6 +30,30 @@ public with sharing class MeetingPrepController {
         }
     }
 
+    @AuraEnabled(cacheable=false)
+    public static String getMeetingSummaries(Id accountId) {
+        try {
+            ConnectApi.EinsteinPromptTemplateGenerationsInput input = new ConnectApi.EinsteinPromptTemplateGenerationsInput();
+            input.isPreview = false;
+            ConnectApi.EinsteinLlmAdditionalConfigInput cfg = new ConnectApi.EinsteinLlmAdditionalConfigInput();
+            cfg.applicationName = 'PromptBuilderPreview';
+            input.additionalConfig = cfg;
+            ConnectApi.WrappedValue accountValue = new ConnectApi.WrappedValue();
+            accountValue.value = String.valueOf(accountId);
+            input.inputParams = new Map<String, ConnectApi.WrappedValue>{
+                'Input:Account' => accountValue
+            };
+            ConnectApi.EinsteinPromptTemplateGenerationsRepresentation output =
+                ConnectApi.EinsteinLLM.generateMessagesForPromptTemplate('Headless_Meeting_Summaries', input);
+            if (output != null && output.generations != null && !output.generations.isEmpty()) {
+                return output.generations[0].text;
+            }
+            return null;
+        } catch (Exception ex) {
+            return 'Error: ' + ex.getTypeName() + ' — ' + ex.getMessage();
+        }
+    }
+
     private static String invokeTemplate(String templateApiName, String inputKey, Object inputValue) {
         ConnectApi.EinsteinPromptTemplateGenerationsInput input = new ConnectApi.EinsteinPromptTemplateGenerationsInput();
         input.isPreview = false;

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenAiPromptTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <activeVersionIdentifier>pEIRrX9UwPpOIfe1VW/YPm4vz4GYVRrD7K1I1yDNEa4=_2</activeVersionIdentifier>
+    <developerName>Headless_Meeting_Summaries</developerName>
+    <masterLabel>Headless Meeting Summaries</masterLabel>
+    <overridable>false</overridable>
+    <templateVersions>
+        <content>You’re a Private Equity Principal working for a premier Private Equity Firm and manage a portfolio of High Growth Portfolio Companies. You are tasked with creating a short summary of all interactions with {!$Input:Account.Name}to be used by yourself for an upcoming meeting with them. 
+
+When I ask you to summarize the interactions, you must strictly follow my instructions below.
+
+Instructions:
+&quot;&quot;&quot;
+- Follow the instructions precisely, do not add any information not provided
+- Mention how many interactions there are and what the purposes are. No emojis for this sentence
+- Summarize each interactions in it&apos;s own paragraph with 1 sentence to summarize the interaction &amp; 1 sentence to summarize the next steps. Neither should exceed 500 characters. Each paragraph should be indicated by an emoji
+- Indicate for each meeting who the participants were on the meeting
+- Do not attribute any positive or negative traits in the summary
+- Use clear, concise, and straightforward language using the active voice and strictly avoiding the use of filler words, phrases &amp; redundant language
+- Keep the emotion of the summary relaxed. Keep the emotion of the summary relaxed
+- Generate the summary based on the above instructions using the data found here: {!$Flow:RK_Prompt_Flow_Get_Interactions.Prompt}
+&quot;&quot;&quot;
+Now create the summary
+</content>
+        <fileDroppingStrategy>{&quot;dropFilesBy&quot;:&quot;LAST_MODIFIED_DATE&quot;,&quot;dropFileStartingWith&quot;:&quot;OLDEST&quot;}</fileDroppingStrategy>
+        <inputs>
+            <apiName>Account</apiName>
+            <definition>SOBJECT://Account</definition>
+            <masterLabel>Account</masterLabel>
+            <referenceName>Input:Account</referenceName>
+            <required>true</required>
+        </inputs>
+        <isCitationEnabled>false</isCitationEnabled>
+        <primaryModel>sfdc_ai__DefaultGPT5Mini</primaryModel>
+        <status>Published</status>
+        <templateDataProviders>
+            <definition>flow://RK_Prompt_Flow_Get_Interactions</definition>
+            <label>*RK Prompt Flow - Get Interactions</label>
+            <parameters>
+                <definition>SOBJECT://Account</definition>
+                <isRequired>true</isRequired>
+                <parameterName>RelatedEntity</parameterName>
+                <valueExpression>{!$Input:Account}</valueExpression>
+            </parameters>
+            <referenceName>Flow:RK_Prompt_Flow_Get_Interactions</referenceName>
+        </templateDataProviders>
+        <versionIdentifier>pEIRrX9UwPpOIfe1VW/YPm4vz4GYVRrD7K1I1yDNEa4=_1</versionIdentifier>
+    </templateVersions>
+    <templateVersions>
+        <content>You’re a Private Equity Principal working for a premier Private Equity Firm and manage a portfolio of High Growth Portfolio Companies. You are tasked with creating a short summary of all interactions with {!$Input:Account.Name}to be used by yourself for an upcoming meeting with them. 
+
+When I ask you to summarize the interactions, you must strictly follow my instructions below.
+
+Instructions:
+&quot;&quot;&quot;
+- Follow the instructions precisely, do not add any information not provided
+- Mention how many interactions there are and what the purposes are. No emojis for this sentence
+- Summarize each interactions in it&apos;s own paragraph with 1 sentence to summarize the interaction &amp; 1 sentence to summarize the next steps. Neither should exceed 500 characters. Each paragraph should be indicated by an emoji
+- Indicate for each meeting who the participants were on the meeting
+- Do not attribute any positive or negative traits in the summary
+- Use clear, concise, and straightforward language using the active voice and strictly avoiding the use of filler words, phrases &amp; redundant language
+- Keep the emotion of the summary relaxed. Keep the emotion of the summary relaxed
+- Generate the summary based on the above instructions using the data found here: {!$Flow:RK_Prompt_Flow_Get_Interactions.Prompt}
+&quot;&quot;&quot;
+Now create the summary
+</content>
+        <fileDroppingStrategy>{&quot;dropFilesBy&quot;:&quot;LAST_MODIFIED_DATE&quot;,&quot;dropFileStartingWith&quot;:&quot;OLDEST&quot;}</fileDroppingStrategy>
+        <inputs>
+            <apiName>Account</apiName>
+            <definition>SOBJECT://Account</definition>
+            <masterLabel>Account</masterLabel>
+            <referenceName>Input:Account</referenceName>
+            <required>true</required>
+        </inputs>
+        <isCitationEnabled>false</isCitationEnabled>
+        <primaryModel>sfdc_ai__DefaultGPT5Mini</primaryModel>
+        <status>Published</status>
+        <templateDataProviders>
+            <definition>flow://RK_Prompt_Flow_Get_Interactions</definition>
+            <label>*RK Prompt Flow - Get Interactions</label>
+            <parameters>
+                <definition>SOBJECT://Account</definition>
+                <isRequired>false</isRequired>
+                <parameterName>RelatedEntity</parameterName>
+                <valueExpression>{!$Input:Account}</valueExpression>
+            </parameters>
+            <referenceName>Flow:RK_Prompt_Flow_Get_Interactions</referenceName>
+        </templateDataProviders>
+        <versionIdentifier>pEIRrX9UwPpOIfe1VW/YPm4vz4GYVRrD7K1I1yDNEa4=_2</versionIdentifier>
+    </templateVersions>
+    <type>einstein_gpt__flex</type>
+    <visibility>Global</visibility>
+</GenAiPromptTemplate>
