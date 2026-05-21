@@ -44,27 +44,8 @@
             </div>
 
             <div class="slds-m-top_medium">
-                <p class="section-label">Meeting Summaries To Date</p>
-                <template lwc:if={meetingsLoading}>
-                    <div class="slds-text-align_center slds-p-around_small">
-                        <lightning-spinner size="small" alternative-text="Loading..."></lightning-spinner>
-                    </div>
-                </template>
-                <template lwc:elseif={hasMeetingSummaries}>
-                    <template lwc:if={meetingSummaries.intro}>
-                        <p class="slds-text-body_small slds-text-color_weak slds-m-bottom_small">{meetingSummaries.intro}</p>
-                    </template>
-                    <template for:each={meetingSummaries.meetings} for:item="meeting">
-                        <div key={meeting.id} class="action-item slds-m-bottom_x-small">
-                            <p class="slds-text-body_small">
-                                <span style="font-size:16px; margin-right:8px;">{meeting.emoji}</span>{meeting.text}
-                            </p>
-                        </div>
-                    </template>
-                </template>
-                <template lwc:else>
-                    <p class="slds-text-body_small slds-text-color_weak">No meeting summaries available.</p>
-                </template>
+                <p class="section-label">Account Summary</p>
+                <c-account-summary account-id={_accountId}></c-account-summary>
             </div>
         </template>
 

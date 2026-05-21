@@ -1,0 +1,16 @@
+<template>
+    <template lwc:if={isLoading}>
+        <div class="slds-text-align_center slds-p-around_small">
+            <lightning-spinner size="small" alternative-text="Loading..."></lightning-spinner>
+        </div>
+    </template>
+    <template lwc:elseif={result}>
+        <lightning-formatted-text value={result}></lightning-formatted-text>
+    </template>
+    <template lwc:elseif={error}>
+        <p class="slds-text-body_small slds-text-color_weak">{error}</p>
+    </template>
+    <template lwc:else>
+        <p class="slds-text-body_small slds-text-color_weak">No meeting summaries available.</p>
+    </template>
+</template>

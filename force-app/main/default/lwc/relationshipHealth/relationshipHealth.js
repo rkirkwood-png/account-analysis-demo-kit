@@ -72,7 +72,7 @@ export default class RelationshipHealth extends LightningElement {
         try {
             const response = await getMeetingSummaries({ accountId });
             if (response) {
-                this.meetingSummaries = this.parseMeetings(response);
+                this.meetingSummaries = { html: response, meetings: [{ id: 0 }] };
             }
         } catch (e) {
             this.meetingSummaries = null;
